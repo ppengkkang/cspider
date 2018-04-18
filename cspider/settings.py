@@ -13,6 +13,8 @@ BOT_NAME = 'cspider'
 
 SPIDER_MODULES = ['cspider.spiders']
 NEWSPIDER_MODULE = 'cspider.spiders'
+MONGO_URI='127.0.0.1:27071'
+MONGO_DB='gquotes'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +66,10 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'cspider.pipelines.CspiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'cspider.pipelines.TextPipeline': 300,
+    'cspider.pipelines.MongoPipline': 400,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
